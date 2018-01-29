@@ -14,6 +14,8 @@ import { TabComponent } from './tabbed-pane/tab/tab.component';
 import { TabbedPaneComponent } from "./tabbed-pane/tabbed-pane/tabbed-pane.component";
 import { PagerComponent } from './tabbed-pane/pager/pager.component';
 import { BadComponent } from './tabbed-pane/bad/bad.component';
+import { CustomLogFormatterService } from './logging/custom-log-formatter.service';
+import { LogFormatterService } from 'logger-lib';
 
 @NgModule({
   imports: [
@@ -39,6 +41,10 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
+        {
+          provide: LogFormatterService,
+          useClass: CustomLogFormatterService
+        },
         CustomPreloadStrategy,
         ExitGuard,
         AuthService,

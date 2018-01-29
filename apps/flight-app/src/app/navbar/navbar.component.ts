@@ -11,7 +11,6 @@ export class NavbarComponent {
     private sidebarVisible: boolean = false;
 
     constructor(private translate: TranslateService) {
-
     }
 
     setLang(lang: string): void {

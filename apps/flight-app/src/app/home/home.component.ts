@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from '../shared/auth/auth.service';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,16 @@ import { AuthService } from '../shared/auth/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private route: ActivatedRoute
+  ) { }
 
-  activeTab = 2;
+  needsLogin: boolean;
+
+  ngOnInit() {
+    this.needsLogin = !!this.route.snapshot.params['needsLogin'];
+  }
 
   get userName(): string {
     return this.authService.userName;
@@ -25,7 +33,5 @@ export class HomeComponent implements OnInit {
     this.authService.logout();
   }
 
-  ngOnInit() {
-  }
 
 }

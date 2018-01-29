@@ -23,6 +23,8 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
+import { LoggerModule } from 'logger-lib';
+
 import { registerLocaleData } from '@angular/common';
 
 import localeDe from '@angular/common/locales/de';
@@ -42,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    LoggerModule.forRoot({ enableDebug: true }),
     FlightApiModule.forRoot(),
     OAuthModule.forRoot(),
     SharedModule.forRoot(),

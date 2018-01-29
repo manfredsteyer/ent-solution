@@ -15,10 +15,21 @@
         <label>To:</label>
         <input [(ngModel)]="to" name="to" class="form-control">
       </div>
+      <div class="form-group">
+        <label>
+            <input [(ngModel)]="urgent" name="urgent" type="checkbox">
+          Urgent (When it's urgent it fails -- like in real life ;-))
+        
+        </label>
+      </div>
 
       <div class="form-group">
         <button (click)="search()" [disabled]="!from || !to" class="btn btn-default">
           {{ 'FLIGHTS.search' | translate}}
+        </button>
+
+        <button *ngIf="flights.length > 0" class="btn btn-default" (click)="delay()">
+          Delay 1st Flight
         </button>
 
         <div *ngIf="flights.length > 0">
@@ -32,15 +43,15 @@
 </div>
 
 <div class="row">
-<div *ngFor="let f of flights">
+  <div *ngFor="let f of flights$ | async">
 
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-    <flight-card
-      [item]="f"
-      [(selected)]="basket[f.id]">
-    </flight-card>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <flight-card
+        [item]="f"
+        [(selected)]="basket[f.id]">
+      </flight-card>
+    </div>
   </div>
-</div>
 </div>
 
 <!--

@@ -11,6 +11,7 @@ import { FLIGHT_BOOKING_ROUTES } from './flight-booking.routes';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { FlightBookingComponent } from './flight-booking.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { AirportComponent } from './airport/airport.component';
 
 @NgModule({
   imports: [
@@ -26,8 +27,9 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     FlightCardComponent,
     PassengerSearchComponent,
     FlightEditComponent,
-    FlightBookingComponent
-  ],
+    FlightBookingComponent,
+    AirportComponent
+],
   providers: [
     
   ],
